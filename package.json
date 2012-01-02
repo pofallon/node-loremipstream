@@ -1,0 +1,22 @@
+{
+  "name": "loremipstream",
+  "description": "A configurable readable stream that generates Lorem ipsum.  Helpful in stream testing.",
+  "keywords": ["stream", "testing", "latin"],
+  "author": "Paul O'Fallon <paul@ofallonfamily.com>",
+  "homepage": "https://github.com/pofallon/node-loremipstream",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "0.x.x",
+    "should": "0.x.x",
+    "memorystream" : "0.x.x",
+  },
+  "engine": "node >= 0.4.1",
+  "version": "0.0.1",
+  "files": [
+    "index.js",
+    "package.json",
+    "README.md",
+    "test"
+  ],
+  "main": "index"
+}
