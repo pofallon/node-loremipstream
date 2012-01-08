@@ -8,6 +8,10 @@ var LoremIpStream = require('loremipstream');
 
 var lorem = new LoremIpStream(options);
 
+lorem.on('end', function() {
+  console.log(this.sent + ' characters sent');
+});
+
 lorem.pipe(process.stdout);
 ```
 
