@@ -15,9 +15,14 @@ function LoremIpStream(options) {
   this.position = 0;  
   this.intervalId = null;
 
+  // The total length of the stream
+  this.size = options.size || lorem.length * 10;
+
+  // The length of each data emission
+  this.dataSize = options.dataSize || lorem.length;
+
+  // The time to wait between each data emission
   this.dataInterval = options.dataInterval || 100;
-  this.charLength = options.charLength || lorem.length;
-  this.chunkSize = options.chunkSize || lorem.length * 10;
 
   //TODO:  Add more options?
 
@@ -52,16 +57,16 @@ LoremIpStream.prototype.resume = function() {
 
     this.intervalId = setInterval(function() {
 
-      if (that.charSent >= that.charLength) {
+      if (that.charSent >= that.size) {
         
         that.emit('end');
         that.destroy();
       
       } else {
 
-        var remaining = that.charLength - that.charSent;
+        var remaining = that.size - that.charSent;
 
-        var bufferSize = (remaining > that.chunkSize) ? that.chunkSize : remaining;
+        var bufferSize = (remaining > that.dataSize) ? that.dataSize : remaining;
         
         var theBuffer = new Buffer(bufferSize);
 
