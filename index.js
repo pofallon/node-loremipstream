@@ -1,3 +1,9 @@
+/*!
+ * node-loremipstream
+ * Copyright(c) 2012 Paul O'Fallon <paul@ofallonfamily.com>
+ * MIT Licensed
+ */
+
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -21,10 +27,10 @@ function LoremIpStream(options) {
   this.position = 0;  
   this.intervalId = null;
 
-  // The total length of the stream
+  // The total size of the stream
   this.size = options.size || lorem.length * 10;
 
-  // The length of each data emission
+  // The size of each data emission
   this.dataSize = options.dataSize || lorem.length;
 
   // The time to wait between each data emission

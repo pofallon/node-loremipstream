@@ -1,3 +1,9 @@
+/*!
+ * node-loremipstream
+ * Copyright(c) 2012 Paul O'Fallon <paul@ofallonfamily.com>
+ * MIT Licensed
+ */
+
 var LoremIpStream = require('../index.js');
 var MemoryStream = require('memorystream');
 var should = require('should');
