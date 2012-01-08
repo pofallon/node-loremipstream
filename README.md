@@ -4,14 +4,16 @@ A configurable Readable Stream that generates Lorem ipsum. Helpful in stream tes
 ## Usage
 
 ```javascript
+
 var LoremIpStream = require('loremipstream');
 
 var lorem = new LoremIpStream(options);
 
 lorem.pipe(process.stdout);
+
 ```
 
-The following options are supported:
+where the following options are supported:
 
 * size - the total size (in characters) of the stream
 * dataSize - the size (in characters) of each emitted 'data' event
