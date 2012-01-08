@@ -5,13 +5,19 @@ util.inherits(LoremIpStream, Stream);
 
 function LoremIpStream(options) {
 
+  var that = this;
+
+  Stream.call(this);
+
   if (!options) {
     options = {};
   }
 
   this.readable = true;
+  this.writable = false;
+  
   this.streamEncoding = null;
-  this.charSent = 0;
+  this.sent = 0;
   this.position = 0;  
   this.intervalId = null;
 
@@ -26,7 +32,9 @@ function LoremIpStream(options) {
 
   //TODO:  Add more options?
 
-  this.resume();
+  process.nextTick(function() {
+    that.resume();
+  });
 
 }
 
@@ -57,14 +65,14 @@ LoremIpStream.prototype.resume = function() {
 
     this.intervalId = setInterval(function() {
 
-      if (that.charSent >= that.size) {
+      if (that.sent >= that.size) {
         
         that.emit('end');
         that.destroy();
       
       } else {
 
-        var remaining = that.size - that.charSent;
+        var remaining = that.size - that.sent;
 
         var bufferSize = (remaining > that.dataSize) ? that.dataSize : remaining;
         
@@ -80,7 +88,7 @@ LoremIpStream.prototype.resume = function() {
           that.emit('data',theBuffer);
         }
 
-        that.charSent += bufferSize;
+        that.sent += bufferSize;
 
       }
     
@@ -115,9 +123,11 @@ LoremIpStream.prototype._getNextChar = function() {
 
 }
 
-module.exports = LoremIpStream;
-
 var lorem  = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ';
     lorem += 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ';
     lorem += 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ';
     lorem += 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ';
+
+LoremIpStream.LoremIpsum = lorem;
+
+module.exports = LoremIpStream;

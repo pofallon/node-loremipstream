@@ -4,11 +4,19 @@
   "keywords": ["stream", "testing", "latin"],
   "author": "Paul O'Fallon <paul@ofallonfamily.com>",
   "homepage": "https://github.com/pofallon/node-loremipstream",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pofallon/node-loremipstream.git"
+  },
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "main": "index",
   "dependencies": {},
   "devDependencies": {
     "mocha": "0.x.x",
     "should": "0.x.x",
-    "memorystream" : "0.x.x",
+    "memorystream" : "0.x.x"
   },
   "engine": "node >= 0.4.1",
   "version": "0.0.1",
@@ -18,5 +26,5 @@
     "README.md",
     "test"
   ],
-  "main": "index"
+  "license": "MIT"
 }
