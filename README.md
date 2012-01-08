@@ -1,5 +1,5 @@
 # node-loremipstream
-A configurable Readable Stream that generates Lorem ipsum. Helpful in stream testing.
+A configurable [Readable Stream](http://nodejs.org/docs/latest/api/streams.html#readable_Stream) that generates [Lorem ipsum](http://www.wikipedia.org/wiki/Lorem_ipsum). Useful for stream testing.
 
 ## Usage
 
@@ -19,7 +19,7 @@ where the following options are supported:
 
 * size - the total size (in characters) of the stream
 * dataSize - the size (in characters) of each emitted 'data' event
-* dataInterval - how often to emit each 'data' event (in ms)
+* dataInterval - how often (in ms) to emit each 'data' event
 
 ## Install
 
