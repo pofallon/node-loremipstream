@@ -1,6 +1,8 @@
 # node-loremipstream
 A configurable [Readable Stream](http://nodejs.org/docs/latest/api/streams.html#readable_Stream) that generates [Lorem ipsum](http://www.wikipedia.org/wiki/Lorem_ipsum). Useful for stream testing.
 
+[![Build Status](https://secure.travis-ci.org/pofallon/node-loremipstream.png)](http://travis-ci.org/pofallon/node-loremipstream)
+
 ## Usage
 
 ```javascript
