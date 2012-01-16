@@ -19,7 +19,7 @@
     "memorystream" : "0.x.x"
   },
   "engine": "node >= 0.4.1",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "index.js",
     "package.json",

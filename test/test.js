@@ -81,6 +81,15 @@ describe('LoremIpStream', function() {
       lorem.pipe(memory);
     });
 
+    it('should interpret a single option as a size', function(done) {
+      lorem = new LoremIpStream(LoremIpStream.LoremIpsum.length);
+      lorem.on('end', function() {
+        memory.getAll().should.equal(LoremIpStream.LoremIpsum);
+        done();
+      });
+      lorem.pipe(memory);
+    });
+
     it('should generate a shorter stream with option.size', function(done) {
       lorem = new LoremIpStream({size : LoremIpStream.LoremIpsum.length*2, dataInterval: 2});
       lorem.on('end', function() {

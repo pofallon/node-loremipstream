@@ -19,6 +19,11 @@ function LoremIpStream(options) {
     options = {};
   }
 
+  // Support a single, simple option of just a size
+  if (!isNaN(parseInt(options * 1))) {
+    options = {size: options};
+  }
+
   this.readable = true;
   this.writable = false;
   
@@ -34,7 +39,7 @@ function LoremIpStream(options) {
   this.dataSize = options.dataSize || lorem.length;
 
   // The time to wait between each data emission
-  this.dataInterval = options.dataInterval || 100;
+  this.dataInterval = options.dataInterval || 2;
 
   //TODO:  Add more options?
 
@@ -121,7 +126,7 @@ LoremIpStream.prototype.destroySoon = function() {
 
 LoremIpStream.prototype._getNextChar = function() {
 
-  if (this.position > lorem.length) {
+  if (this.position >= lorem.length) {
     this.position = 0;
   }
   
