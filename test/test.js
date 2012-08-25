@@ -24,6 +24,8 @@ describe('LoremIpStream', function() {
 
   describe('a stream', function() {
 
+    var dataWritten = false;
+
     it('should be readable', function() {
       lorem.readable.should.be.true;
     });
@@ -36,8 +38,12 @@ describe('LoremIpStream', function() {
       lorem.on('data', function(data) {
         data.should.exist;
         data.should.not.be.empty;
-        done(); 
+        dataWritten = true;
       });
+      lorem.on('end', function() {
+        dataWritten.should.be.true;
+        done();
+      })
       lorem.pipe(memory);
     });
 
